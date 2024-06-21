@@ -1,0 +1,34 @@
+﻿@model string[]
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cat Facts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Cat Facts</h1>
+    <form asp-action="FetchCatFact" method="get">
+        <button type="submit" class="btn btn-primary">Fetch new cat fact</button>
+    </form>
+    <div class="mt-4">
+        <h2>Stored Cat Facts:</h2>
+        @if (Model.Length > 0)
+        {
+            <ul>
+                @foreach (var fact in Model)
+                {
+                    <li>@fact</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No cat facts found. Fetch a new fact first.</p>
+        }
+    </div>
+</div>
+</body>
+</html>
